@@ -1,5 +1,7 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var platforms, player;
+var score = 0;
+var scoreText;
 
 function preload (){
     game.load.image('sky', 'assets/sky.png');
@@ -30,6 +32,7 @@ function create (){
     player.animations.add('right', [5, 6, 7, 8], 10, true);
     
     cursors = game.input.keyboard.createCursorKeys();
+    scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
     
     stars = game.add.group();
     stars.enableBody = true;
@@ -66,4 +69,7 @@ function update(){
 
 function collectStar (player, star) {
     star.kill();
+    score += 10;
+    scoreText.text = 'Score: ' + score;
+
 }
