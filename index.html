@@ -1,14 +1,273 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Arcade | Game Collection</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #090b14;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 65px 8% 45px;
+            background:
+                radial-gradient(ellipse at 80% 0%, #4925a5 0%, transparent 45%),
+                linear-gradient(135deg, #11152a, #090b14);
+            border-bottom: 1px solid #252943;
+        }
+
+        .tag {
+            color: #a78bfa;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 7vw, 76px);
+            letter-spacing: -3px;
+        }
+
+        h1 span {
+            color: #a78bfa;
+        }
+
+        .subtitle {
+            color: #a4a9bd;
+            margin-top: 15px;
+            font-size: 17px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 35px;
+            margin-top: 35px;
+            color: #a4a9bd;
+            font-size: 14px;
+        }
+
+        .stats strong {
+            color: white;
+            font-size: 20px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        main {
+            padding: 45px 8%;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section-heading h2 {
+            font-size: 25px;
+        }
+
+        .section-heading p {
+            color: #888fa8;
+            font-size: 13px;
+        }
+
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background: #141827;
+            border: 1px solid #252b40;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-7px);
+            border-color: #8b5cf6;
+            box-shadow: 0 12px 35px #0008;
+        }
+
+        .game-cover {
+            height: 175px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 65px;
+            background: linear-gradient(135deg, #28204d, #151c36);
+        }
+
+        .game-card:nth-child(2) .game-cover {
+            background: linear-gradient(135deg, #164e63, #172554);
+        }
+
+        .game-card:nth-child(3) .game-cover {
+            background: linear-gradient(135deg, #713f12, #3b1d37);
+        }
+
+        .game-info {
+            padding: 22px;
+        }
+
+        .game-info h3 {
+            font-size: 21px;
+            margin-bottom: 9px;
+        }
+
+        .game-info p {
+            color: #9ca3b8;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 45px;
+        }
+
+        .category {
+            display: inline-block;
+            color: #c4b5fd;
+            background: #35245c;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            margin: 15px 0;
+        }
+
+        .play-btn {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background: #7c3aed;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .play-btn:hover {
+            background: #9333ea;
+        }
+
+        footer {
+            text-align: center;
+            color: #666e84;
+            padding: 35px;
+            border-top: 1px solid #202438;
+            font-size: 13px;
+        }
+
+        @media(max-width: 600px) {
+            header {
+                padding: 45px 6%;
+            }
+
+            main {
+                padding: 35px 6%;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1><strong>My Games Directory: </strong></h1><br />
-    <br /><a href="javascript/tennis/index.html">Tennis</a>
-    <br /><a href="javascript/devayan/index.html">Devayan</a>
-    <br /><a href="tictactoe/index.html">TicTacToe - JQUERY</a>
+
+    <header>
+        <div class="tag">Yash Datir, Software Developer</div>
+
+        <h1>MY <span>ARCADE.</span></h1>
+
+        <p class="subtitle">
+            A collection of games, experiments and ideas brought to life through code.
+        </p>
+
+        <div class="stats">
+            <div>
+                <strong id="gameCount">03</strong>
+                Games
+            </div>
+            <div>
+                <strong>100%</strong>
+                Made with Code
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="section-heading">
+            <h2>Explore Games</h2>
+            <p>Choose your next adventure →</p>
+        </div>
+
+        <div class="games" id="gamesContainer">
+
+            <div class="game-card">
+                <div class="game-cover">🎾</div>
+                <div class="game-info">
+                    <h3>Tennis</h3>
+                    <p>A classic tennis game. Test your reflexes and enjoy the match!</p>
+                    <span class="category">Sports</span>
+                    <a class="play-btn" href="javascript/tennis/index.html">
+                        ▶ Play Game
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-cover">🚀</div>
+                <div class="game-info">
+                    <h3>Devayan</h3>
+                    <p>Explore another gaming experiment from my collection.</p>
+                    <span class="category">Adventure</span>
+                    <a class="play-btn" href="javascript/devayan/index.html">
+                        ▶ Play Game
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-cover">❌</div>
+                <div class="game-info">
+                    <h3>Tic Tac Toe</h3>
+                    <p>A classic strategy game built using jQuery.</p>
+                    <span class="category">Strategy</span>
+                    <a class="play-btn" href="tictactoe/index.html">
+                        ▶ Play Game
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        Designed & Built with ❤️ by Me | My Arcade © 2026
+    </footer>
+
+    <script>
+        const games = document.querySelectorAll('.game-card');
+        document.getElementById('gameCount').textContent =
+            String(games.length).padStart(2, '0');
+    </script>
+
 </body>
 </html>
